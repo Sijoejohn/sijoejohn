@@ -1,8 +1,10 @@
 name: Update README with latest blog posts
 
 on:
+  workflow_dispatch: # Allows manual triggering
   schedule:
-    - cron: '0 0 * * MON'
+    - cron: '0 0 * * MON' # Runs at 00:00 UTC every Monday
+    
   push:
     branches:
       - main
@@ -17,7 +19,7 @@ jobs:
       - name: Fetch latest blog posts
         uses: gautamkrishnar/blog-post-workflow@v1.1.2
         with:
-          feed_list: "https://sjohnonline.blogspot.com/feeds/posts/default" # Replace with your blog's RSS feed URL
+          feed_list: "https://sjohnonline.blogspot.com/feeds/posts/default"
 
       - name: Commit changes
         run: |
